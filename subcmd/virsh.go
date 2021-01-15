@@ -69,7 +69,7 @@ func Start(name string) {
 //internal fuction
 
 // SearchVM is serch VM by virsh command
-func SearchVM(name string) {
+func SearchVM(name string) (status string) {
 	status := ""
 	cmd := "virsh list --all | grep " + name
 	exist, err := exec.Command("sh", "-c", cmd).Output()
