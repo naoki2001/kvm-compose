@@ -19,6 +19,12 @@ func Error(code int, status string) {
 		fmt.Print("error: Unknown options \n")
 	case 10:
 		fmt.Print("error: Command execution failed \n")
+	case 20:
+		fmt.Print("erroe: " + status + " is not found\n")
+	case 21:
+		fmt.Print("erroe: " + status + " is already running\n")
+	case 22:
+		fmt.Print("erroe: " + status + " is already stopping\n")
 	default:
 		fmt.Print("error: Unexpected error \n")
 	}

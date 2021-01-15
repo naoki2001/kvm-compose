@@ -34,12 +34,8 @@ func List(option string) {
 
 // Start executes virsh start [name]
 func Start(name string) {
-	cmd := "virsh list | grep " + name
-	status, _ := exec.Command("sh", "-c", cmd).Output()
-	if string(status) != "" {
-		fmt.Print("error: " + name + " is allready running \n")
-		return
-	}
+	status := SearchVM(name)
+	if status == "NotFound"
 
 	arg := []string{
 		"start",
@@ -58,4 +54,24 @@ func Start(name string) {
 	}
 
 	return
+}
+
+//internal fuction
+
+// SearchVM is serch VM by virsh command
+func SearchVM(name string)(status string) {
+	cmd := "virsh list --all | grep " + name
+	exist, err := exec.Command("sh", "-c", cmd).Output()
+
+	if exist == " " {
+		status = "NotFound"
+	} else {
+		cmd = "virsh list | grep " + name
+		exist, err = exec.Command("sh", "-c", cmd).Output()
+		if exist == " " {
+			status = "inactive"
+		} else {
+			status = "active"
+		}
+	}
 }
