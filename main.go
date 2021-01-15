@@ -32,7 +32,6 @@ func main() {
 			} else if len(os.Args) >= 4 {
 				exception.Error(4, "meny")
 			}
-			subcmd.Start()
 		case "shutdown":
 
 		case "destroy":
