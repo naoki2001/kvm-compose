@@ -70,15 +70,16 @@ func Start(name string) {
 
 // SearchVM is serch VM by virsh command
 func SearchVM(name string) {
+	status := ""
 	cmd := "virsh list --all | grep " + name
 	exist, err := exec.Command("sh", "-c", cmd).Output()
 
-	if exist == " " {
+	if exist == "" {
 		status = "NotFound"
 	} else {
 		cmd = "virsh list | grep " + name
 		exist, err = exec.Command("sh", "-c", cmd).Output()
-		if exist == " " {
+		if exist == "" {
 			status = "inactive"
 		} else {
 			status = "active"
