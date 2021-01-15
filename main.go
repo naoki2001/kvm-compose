@@ -25,7 +25,7 @@ func main() {
 			}
 			subcmd.List(option)
 		case "start":
-			if len(os.Args) >= 2 {
+			if len(os.Args) <= 2 {
 				exception.Error(3, "fes")
 			} else if len(os.Args) == 3 {
 				subcmd.Start(os.Args[2])
