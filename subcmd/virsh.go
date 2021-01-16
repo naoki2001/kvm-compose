@@ -43,7 +43,7 @@ func Start(name string) {
 		return
 	} else if status == "inactive" {
 	} else {
-		exception.Error(-1, "none")
+		exception.Error(10, "none")
 		return
 	}
 
@@ -54,15 +54,80 @@ func Start(name string) {
 
 	exec.Command("virsh", arg...).Start()
 	for {
-		status, _ = exec.Command("sh", "-c", cmd).Output()
-		if string(status) != "" {
-			fmt.Print("start \n")
+		status := SearchVM(name)
+		if status == "active" {
+			fmt.Print("success\n")
 			break
 		}
 		time.Sleep(time.Second)
 		fmt.Print("*")
 	}
+	return
+}
 
+// Shutdown executes virsh shutdown [name]
+func Shutdown(name string) {
+	status := SearchVM(name)
+	if status == "NotFound" {
+		exception.Error(20, name)
+		return
+	} else if status == "active" {
+	} else if status == "inactive" {
+		exception.Error(22, name)
+		return
+	} else {
+		exception.Error(10, "none")
+		return
+	}
+
+	arg := []string{
+		"shutdown",
+		name,
+	}
+
+	exec.Command("virsh", arg...).Start()
+	for {
+		status := SearchVM(name)
+		if status == "inactive" {
+			fmt.Print("success\n")
+			break
+		}
+		time.Sleep(time.Second)
+		fmt.Print("*")
+	}
+	return
+}
+
+// Destroy executes virsh destroy [name]
+func Destroy(name string) {
+	status := SearchVM(name)
+	if status == "NotFound" {
+		exception.Error(20, name)
+		return
+	} else if status == "active" {
+	} else if status == "inactive" {
+		exception.Error(22, name)
+		return
+	} else {
+		exception.Error(10, "none")
+		return
+	}
+
+	arg := []string{
+		"Destroy",
+		name,
+	}
+
+	exec.Command("virsh", arg...).Start()
+	for {
+		status := SearchVM(name)
+		if status == "inactive" {
+			fmt.Print("success\n")
+			break
+		}
+		time.Sleep(time.Second)
+		fmt.Print("*")
+	}
 	return
 }
 
@@ -71,14 +136,14 @@ func Start(name string) {
 // SearchVM is serch VM by virsh command
 func SearchVM(name string) (status string) {
 	cmd := "virsh list --all | grep " + name
-	exist, err := exec.Command("sh", "-c", cmd).Output()
+	err := exec.Command("sh", "-c", cmd).Run()
 
-	if exist == "" {
+	if err != nil {
 		status = "NotFound"
 	} else {
 		cmd = "virsh list | grep " + name
-		exist, err = exec.Command("sh", "-c", cmd).Output()
-		if exist == "" {
+		err = exec.Command("sh", "-c", cmd).Run()
+		if err != nil {
 			status = "inactive"
 		} else {
 			status = "active"

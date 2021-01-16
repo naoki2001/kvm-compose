@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-// Error is return error status
+// Error is view error message
 func Error(code int, status string) {
 	switch code {
 	case 1:
@@ -16,15 +16,15 @@ func Error(code int, status string) {
 	case 4:
 		fmt.Print("error: Too many options \n")
 	case 5:
-		fmt.Print("error: Unknown options \n")
+		fmt.Print("error: Unknown options: " + status + "\n")
 	case 10:
 		fmt.Print("error: Command execution failed \n")
 	case 20:
-		fmt.Print("erroe: " + status + " is not found\n")
+		fmt.Print("error: " + status + " not found\n")
 	case 21:
-		fmt.Print("erroe: " + status + " is already running\n")
+		fmt.Print("error: " + status + " is already running\n")
 	case 22:
-		fmt.Print("erroe: " + status + " is already stopping\n")
+		fmt.Print("error: " + status + " is already stopping\n")
 	default:
 		fmt.Print("error: Unexpected error \n")
 	}

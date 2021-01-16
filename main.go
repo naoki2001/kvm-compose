@@ -14,11 +14,18 @@ func main() {
 		switch os.Args[1] {
 		case "build":
 			if len(os.Args) == 2 {
+			} else {
+				exception.Error(4, "meny")
 			}
 		case "list":
 			option := "default"
 			if len(os.Args) == 3 {
-				option = os.Args[2]
+				if os.Args[2] == "--all" || os.Args[2] == "--inactive" {
+					option = os.Args[2]
+				} else {
+					exception.Error(5, os.Args[2])
+					return
+				}
 			} else if len(os.Args) >= 4 {
 				exception.Error(4, "meny")
 				return
@@ -26,20 +33,36 @@ func main() {
 			subcmd.List(option)
 		case "start":
 			if len(os.Args) <= 2 {
-				exception.Error(3, "fes")
+				exception.Error(3, "few")
 			} else if len(os.Args) == 3 {
 				subcmd.Start(os.Args[2])
 			} else if len(os.Args) >= 4 {
 				exception.Error(4, "meny")
 			}
 		case "shutdown":
-
+			if len(os.Args) <= 2 {
+				exception.Error(3, "few")
+			} else if len(os.Args) == 3 {
+				subcmd.Shutdown(os.Args[2])
+			} else if len(os.Args) >= 4 {
+				exception.Error(4, "meny")
+			}
 		case "destroy":
-
+			if len(os.Args) <= 2 {
+				exception.Error(3, "few")
+			} else if len(os.Args) == 3 {
+				subcmd.Destroy(os.Args[2])
+			} else if len(os.Args) >= 4 {
+				exception.Error(4, "meny")
+			}
 		case "version":
-
+			if len(os.Args) == 2 {
+				subcmd.Version()
+			} else {
+				exception.Error(4, "meny")
+			}
 		default:
-			exception.Error(2, os.Args[2])
+			exception.Error(2, os.Args[1])
 		}
 	}
 	return
