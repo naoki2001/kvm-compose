@@ -14,6 +14,7 @@ func main() {
 		switch os.Args[1] {
 		case "build":
 			if len(os.Args) == 2 {
+				subcmd.Build()
 			} else {
 				exception.Error(4, "meny")
 			}
