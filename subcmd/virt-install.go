@@ -1,11 +1,16 @@
 package subcmd
 
 import (
+	"fmt"
+
 	"../process"
 )
 
 // Build is virt-install [options...]
 func Build() {
-	process.ReadYAML()
+	yml := process.ReadYAML()
+
+	fmt.Print(yml)
+
 	return
 }
