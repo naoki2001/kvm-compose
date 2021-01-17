@@ -27,6 +27,8 @@ func Error(code int, status string) {
 		fmt.Print("error: " + status + " is already stopping\n")
 	case 30:
 		fmt.Print("error: Failed to read kvm-compose.yml\n")
+	case 35:
+		fmt.Print("error: Need " + status + " option in kvm-compose.yml\n")
 	default:
 		fmt.Print("error: Unexpected error \n")
 	}
