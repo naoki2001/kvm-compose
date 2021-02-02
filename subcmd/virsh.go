@@ -32,8 +32,8 @@ func List(option string) {
 	return
 }
 
-// Operation is doing VM operation virsh [cont] [name]
-func Operation(name string, cont string) {
+// VMOperation is doing VM operation: virsh [cont] [name]
+func VMOperation(name string, cont string) {
 	status := SearchVM(name)
 	if status == "NotFound" {
 		exception.Error(20, name)
