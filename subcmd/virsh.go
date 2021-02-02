@@ -49,6 +49,8 @@ func Operation(name string, cont string) {
 		return
 	}
 	
+	fmt.Print(cont + "VM \n")
+	
 	arg := []string{
 		cont,
 		name,
