@@ -8,8 +8,8 @@ kvm-compose manages VM with YAML file and slightly improved virsh command
 - installed go
 
 ## Introduction
-- ``` git clone "https://github.com/naoki2001/kvm-compose" ```
-- ``` cd kvm-compose ```
+- Clone this repository with git command: ``` git clone "https://github.com/naoki2001/kvm-compose" ```
+- Change to the kvm-compose directory``` cd kvm-compose ```
 - 
 
 ## Unfinished
