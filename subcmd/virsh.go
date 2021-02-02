@@ -9,8 +9,8 @@ import (
 	"../exception"
 )
 
-// List executes virsh list [option]
-func List(option string) {
+// VMList executes virsh list [option]
+func VMList(option string) {
 	arg := []string{
 		"list",
 		option,
