@@ -31,7 +31,7 @@ func main() {
 				exception.Error(4, "meny")
 				return
 			}
-			subcmd.List(option)
+			subcmd.VMList(option)
 		case "start":
 			if len(os.Args) <= 2 {
 				exception.Error(3, "few")
