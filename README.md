@@ -1,7 +1,7 @@
 # kvm-compose
 
 ## Overview
-kvm-compose manages VM by YAML file and useful virsh command
+kvm-compose manages VM with YAML file and slightly improved virsh command
 
 ## Prerequisite environmen
 - can use virsh command
