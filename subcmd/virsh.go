@@ -69,8 +69,6 @@ func VMOperation(name string, cont string) {
 	return
 }
 
-//internal fuction
-
 // SearchVM is serch VM by virsh command
 func SearchVM(name string) (status string) {
 	cmd := "virsh list --all | grep " + name
