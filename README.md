@@ -1,11 +1,13 @@
 # kvm-compose
 
 ## Overview
-kvm-compose manages VM with YAML file and slightly improved virsh command
+kvm-compose manages VM with YAML file and slightly improved some command
 
-## Prerequisite environmen
-- can use virsh command
-- installed go
+## Install KVM
+See other sites that suit your environment
+
+## Install Go lang
+See other sites that suit your environment
 
 ## Introduction
 - Clone this repository with git command: ``` git clone "https://github.com/naoki2001/kvm-compose" ```
