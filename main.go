@@ -56,6 +56,15 @@ func main() {
 			} else if len(os.Args) >= 4 {
 				exception.Error(4, "meny")
 			}
+		case "restart":
+			if len(os.Args) <= 2 {
+				exception.Error(3, "few")
+			} else if len(os.Args) == 3 {
+				subcmd.VMOperation(os.Args[2], "shutdown")
+				subcmd.VMOperation(os.Args[2], "start")
+			} else if len(os.Args) >= 4 {
+				exception.Error(4, "meny")
+			}
 		case "version":
 			if len(os.Args) == 2 {
 				subcmd.Version()
