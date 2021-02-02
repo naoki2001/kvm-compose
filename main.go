@@ -36,7 +36,7 @@ func main() {
 			if len(os.Args) <= 2 {
 				exception.Error(3, "few")
 			} else if len(os.Args) == 3 {
-				subcmd.Start(os.Args[2])
+				subcmd.VMOperation(os.Args[2], os.Args[1])
 			} else if len(os.Args) >= 4 {
 				exception.Error(4, "meny")
 			}
@@ -44,7 +44,7 @@ func main() {
 			if len(os.Args) <= 2 {
 				exception.Error(3, "few")
 			} else if len(os.Args) == 3 {
-				subcmd.Shutdown(os.Args[2])
+				subcmd.VMOperation(os.Args[2], os.Args[1])
 			} else if len(os.Args) >= 4 {
 				exception.Error(4, "meny")
 			}
@@ -52,7 +52,7 @@ func main() {
 			if len(os.Args) <= 2 {
 				exception.Error(3, "few")
 			} else if len(os.Args) == 3 {
-				subcmd.Destroy(os.Args[2])
+				subcmd.VMOperation(os.Args[2], os.Args[1])
 			} else if len(os.Args) >= 4 {
 				exception.Error(4, "meny")
 			}
