@@ -12,6 +12,5 @@ See other sites that suit your environment
 ## Introduction
 - Clone this repository with git command: ``` git clone "https://github.com/naoki2001/kvm-compose" ```
 - Change to the kvm-compose directory``` cd kvm-compose ```
-- 
 
 ## Unfinished
