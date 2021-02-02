@@ -32,6 +32,41 @@ func List(option string) {
 	return
 }
 
+// Operation is doing VM operation virsh [cont] [name]
+func Operation(name string, cont string) {
+	status := SearchVM(name)
+	if status == "NotFound" {
+		exception.Error(20, name)
+		return
+	} else if status == "active" && cont == "start" {
+		exception.Error(21, name)
+		return
+	} else if status == "inactive" && ( cont == "shutdown" || cont =="destroy" ) {
+		exception.Error(22, name)
+		return
+	} else {
+		exception.Error(10, "none")
+		return
+	}
+	
+	arg := []string{
+		cont,
+		name,
+	}
+	
+	exec.Command("virsh", arg...).Start()
+	for {
+		status := SearchVM(name)
+		if (status == "active" && cont == "start") || (status == "inactive" && ( cont == "shutdown" || cont =="destroy" )) {
+			fmt.Print("success\n")
+			break
+		}
+		time.Sleep(time.Second)
+		fmt.Print("*")
+	}
+	return
+}
+
 // Start executes virsh start [name]
 func Start(name string) {
 	status := SearchVM(name)
