@@ -4,10 +4,10 @@
 kvm-compose manages VM with YAML file and slightly improved some command
 
 ## Install KVM
-See other sites that suit your environment
+Install KVM and virt-install
 
 ## Install Go lang
-See other sites that suit your environment
+Install golang
 
 ## Introduction
 - Clone this repository with git command: ``` git clone "https://github.com/naoki2001/kvm-compose" ```
